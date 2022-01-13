@@ -1,3 +1,5 @@
+/*This is the modified version of maitreyeepaliwal/Solving-System-of-linear-equations-in-parallel-and-serial/random.c and has been used under MIT License.
+Link to the master project: https://github.com/maitreyeepaliwal/Solving-System-of-linear-equations-in-parallel-and-serial*/
 #include <iostream>
 #include <omp.h>
 
