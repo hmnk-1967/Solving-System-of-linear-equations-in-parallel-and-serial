@@ -98,16 +98,10 @@ int main()
     cout << "\n\nFINDING SOLUTIONS: \n\n 1. Conjugate Gradient: \n\t A. Serial Execution: \n";
 
     //Conjugate Gradient
-    double tb = omp_get_wtime();
     conjugategradient_s(matrix3, b3, x3, n);
-    tb = omp_get_wtime() - tb;
-    cout << "\t B. Parallel Execution: \n";
-    double tb1 = omp_get_wtime();
+    cout << "\n\t B. Parallel Execution: \n";
+    
     conjugategradient_p(matrix4, b4, x4, n);
-    tb1 = omp_get_wtime() - tb1;
-
-    cout << "\n\t Time for serial execution: " << tb << " seconds\n\n";
-    cout << "\n\t Time for parallel execution: " << tb1 << " seconds\n\n";
 
     free(matrix);
     free(b);
@@ -141,7 +135,7 @@ void conjugategradient_p(double* A, double* b, double* x, int n)
     double* r = new double[n];
     double* p = new double[n];
     double* px = new double[n];
-
+    double tb1 = omp_get_wtime();
 #pragma omp parallel for num_threads(t)
     for (int i = 0; i < n; i++)
     {
@@ -224,9 +218,10 @@ void conjugategradient_p(double* A, double* b, double* x, int n)
         if (c == n)
             break;
     }
-
+    tb1 = omp_get_wtime() - tb1;
     for (int i = 0; i < n; i++)
-        cout << "\t\t" << x[i] << endl;
+        cout << "\t\tX" << i << " = " << x[i] << endl;
+    cout << "\n\nTime for this processing: " << tb1 << " seconds\n\n";
 }
 
 void conjugategradient_s(double* A, double* b, double* x, int n)
@@ -237,6 +232,7 @@ void conjugategradient_s(double* A, double* b, double* x, int n)
     double* r = new double[n];
     double* p = new double[n];
     double* px = new double[n];
+    double tb = omp_get_wtime();
     for (int i = 0; i < n; i++)
     {
         x[i] = 0;
@@ -299,6 +295,8 @@ void conjugategradient_s(double* A, double* b, double* x, int n)
         if (c == n)
             break;
     }
+    tb = omp_get_wtime() - tb;
     for (int i = 0; i < n; i++)
-        cout << "\t\t" << x[i] << endl;
+        cout << "\t\tX" << i << " = " << x[i] << endl;
+    cout << "\n\nTime for this processing: " << tb << " seconds\n\n";
 }
