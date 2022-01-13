@@ -1,5 +1,6 @@
-/*This is the modified version of maitreyeepaliwal/Solving-System-of-linear-equations-in-parallel-and-serial/random.c and has been used under MIT License.
-Link to the master project: https://github.com/maitreyeepaliwal/Solving-System-of-linear-equations-in-parallel-and-serial*/
+/*This is the modified version of maitreyeepaliwal/Solving-System-of-linear-equations-in-parallel-and-serial/random.c and is being used under MIT License.
+Link to the master project: https://github.com/maitreyeepaliwal/Solving-System-of-linear-equations-in-parallel-and-serial 
+To use OpenMP on Visual Studio, refer to this link: https://stackoverflow.com/questions/4515276/openmp-is-not-creating-threads-in-visual-studio */
 #include <iostream>
 #include <omp.h>
 
